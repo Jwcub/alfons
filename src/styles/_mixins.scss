@@ -1,0 +1,24 @@
+@use "sass:color";
+
+@mixin wrapper ($max-width: 1100px, $padding: 20px 40px) {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: $padding;
+}
+
+@mixin button($bgColor: #121212, $rounded: false) {
+    background-color: $bgColor; 
+    border: none;
+    color: white;
+    font-size: 1em;
+    padding: 15px 20px;
+    
+
+    @if $rounded {
+        border-radius: 10px;
+    }
+
+    &:hover {
+        background-color: color.scale($bgColor, $lightness: 20%);
+    }
+}
