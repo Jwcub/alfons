@@ -24,7 +24,7 @@ h1, h2, h3 {
     text-decoration: none;
 }
 
-header {
+.header-firstpage {
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -32,10 +32,16 @@ header {
 }
 
 @media (prefers-color-scheme: dark) {
-  header {
-     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('/public/pic1.jpg')
-  }
+    .header-firstpage {
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('/public/pic1.jpg')
+    }
 }
+
+.header {
+    @extend .header-firstpage;
+    height: 30vh;
+}
+
 
 .page-header{
     background-color: light-dark(
@@ -138,6 +144,10 @@ header {
     @include mixins.wrapper;
     display: flex;
     flex-direction: column;
+
+    ul {
+        margin-top: 0;
+    }
 }
 
 .text-block {
