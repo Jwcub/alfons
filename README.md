@@ -12,4 +12,4 @@ De SASS funktioner som använts är bland annat:
 
 OBS: I labben har enbart color SCALE använts då jag fått upp varning om att functionen darken() håller på att avvecklas. 
 
-Länk till webbplats: 
+Länk till webbplats: https://frontend-labb3.netlify.app/
