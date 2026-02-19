@@ -10,7 +10,7 @@
     <title>Alfons möbelsnickeri</title>
 </head>
 <body>
-    <header class="header-firstpage">
+    <header class="header">
         <div class="page-header">
             <div class="wrapper-header">
                 <a href="/" class="logo">Alfons möbelsnickeri</a>
@@ -20,52 +20,42 @@
 
                 <nav>
                     <ul class="main-nav">
-                        <li><a href="#" class="active">Startsida</a></li>
+                        <li><a href="index.html">Startsida</a></li>
                         <li><a href="#">Projekt</a></li>
                         <li><a href="#">Om företaget</a></li>
                         <li><a href="#">Kontakt</a></li>
                         <li><a href="/sass.html">SASS</a></li>
-                        <li><a href="/animationer.html">Animationer</a></li>
+                        <li><a href="/animationer.html" class="active">Animationer</a></li>
                     </ul>
                 </nav>
 
             </div>
         </div>
-
-        <div class="hero">
-            <button class="established">Etablerat 2026</button>
-            <h1>Lokalt hantverk. <br>
-                Tidlös design.</h1>
-            <h2>Platsbyggd inredning och fristående möbler i massiva material. Vi kombinerar traditionella metoder med modern funktion.</h2>
-
-            <button class="red-button">Tidigare projekt</button>
-            <button class="button">Kontakta oss</button>
-
-        </div>
     </header>
     <main>
         <section class="wrapper-body">
-            <div class="text-block">
-                <h2>Utvalda projekt</h2>
-                <p>Ett urval av våra senaste projekt, där träets naturliga skönhet möter precisionen i traditionellt hantverk. </p>
-            </div>
+                <h1 class="title-animation">Animationer</h1>
 
-            <div class="highlighted">
-                <picture>
-                    <img src="/public/furniture1.webp" alt="">
-                </picture>
+                <div class="flexbox">
+                    <div class="flex-child">
+                        <picture>
+                            <img src="/public/tools.jpg" alt="verktyg" class="fly-in-left">
+                        </picture>
+                    </div>
 
-                <picture>
-                    <img src="/public/furniture2.webp" alt="">
-                </picture>
+                    <div class="flex-child">
+                        <p class="fly-in-right">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas scelerisque magna quis metus blandit interdum. Ut lobortis enim nibh. Proin pharetra nibh a arcu lobortis suscipit. Fusce viverra porta volutpat. Cras cursus malesuada nibh, id suscipit libero tristique non. Pellentesque ultrices ornare varius. Cras risus libero, luctus nec urna quis, posuere convallis dui. Quisque eget ex vitae orci imperdiet facilisis.
+                        </p>
+                    </div>
+                </div>
 
-                <picture>
-                    <img src="/public/furniture3.webp" alt="">
-                </picture>
-            </div>
-        </section>
-    
+                <button id="show-animation">Klicka för överraskning</button>
+        </section>  
     </main>
+
+    <img src="/public/running.gif" alt="running figure" class="gif">
+
         <footer>
         <div class="wrapper-footer">
             <div class="footer-item">
@@ -81,6 +71,7 @@
                     <li><a href="#">Om företaget</a></li>
                     <li><a href="#">Kontakt</a></li>
                     <li><a href="/sass.html">SASS</a></li>
+                    <li><a href="/animationer.html">Animationer</a></li>
                 </ul>
             </div>
 
@@ -99,6 +90,7 @@
         <p class="copyright">Copyright</p>
 
     </footer>
+
     <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>

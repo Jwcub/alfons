@@ -14,6 +14,8 @@
     font-size: 1em;
     padding: 15px 20px;
     cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 1s ease-out;
     
 
     @if $rounded {
@@ -21,7 +23,8 @@
     }
 
     &:hover {
-        background-color: color.scale($bgColor, $lightness: 20%);
+        background-color: rgba($bgColor, 0.4);
+        border: 1px solid rgba($bgColor, 0.8);
     }
 }
 

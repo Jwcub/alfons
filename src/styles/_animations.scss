@@ -1,0 +1,43 @@
+@use 'variables';
+
+@keyframes titleAnimation {
+    0%, 100% {
+        color: light-dark(variables.$light-text, variables.$dark-text);
+    }
+
+    50% {
+        color: variables.$color-terracotta;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes flyinLeft {
+    from {
+    transform: translateX(-300px);
+    opacity: 0.5;
+    }
+    to {
+    transform: translateX(0);
+    opacity: 1;
+    }
+}
+
+@keyframes flyinRight {
+    from {
+    transform: translateX(300px);
+    opacity: 0.5;
+    }
+    to {
+    transform: translateX(0);
+    opacity: 1;
+    }
+}
+
+@keyframes runTheWorld {
+    0% { 
+        transform: translateX(0);
+    }
+    100% { 
+        transform: translateX(calc(100vw + 50px)); /* Går hela vägen till högerkanten */
+    }
+}

@@ -1,5 +1,6 @@
 @use 'variables';
 @use 'mixins';
+@use 'animations';
 
 :root {
     color-scheme: light dark;
@@ -11,11 +12,18 @@ body {
     font-family: "Roboto", sans-serif;
     font-size: 1rem;
     margin: 0;
+    overflow-x: hidden;
 }
 
 h1, h2, h3 {
     margin: 10px 0;
 }
+
+img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
 
 .logo {
     color: light-dark(variables.$light-text, variables.$dark-text);
@@ -154,6 +162,13 @@ h1, h2, h3 {
     ul {
         margin-top: 0;
     }
+
+    button {
+        @include mixins.button(variables.$color-terracotta, $rounded: true);
+        width: auto;
+        align-self: center;
+        margin-top: 20px;
+    }
 }
 
 .text-block {
@@ -165,12 +180,6 @@ h1, h2, h3 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 30px;
-
-    img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-    }
 }
 
 footer {
@@ -203,4 +212,39 @@ footer {
 
 .copyright {
     text-align: center;
+}
+
+.title-animation {
+    margin-top: 10px;
+    font-size: 3rem;
+    animation-name: titleAnimation;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    text-align: center;
+}
+
+.flexbox {
+    display: flex;
+    gap: 30px;
+}
+.flex-child {
+    flex-basis: 50%;
+    align-content: center;
+}
+
+.fly-in-left {
+    animation: flyinLeft 1s ease-out forwards;
+}
+
+.fly-in-right {
+    animation: flyinRight 1s ease-out forwards;
+}
+
+.gif {
+    width: 50px;
+    height: auto;
+    animation: runTheWorld 8s 1 linear 0.5s paused;
+    position: relative;
+    left: -50px;
+    top: 4px;
 }
