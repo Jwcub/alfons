@@ -1,15 +1,10 @@
-# UPPGIFT 3 #
-I denna uppgift har jag tränat på att använda SASS i utvecklingen av en webbplats. 
+# UPPGIFT 4 #
+I denna uppgift har jag tränat på att använda grafiska effekter med CSS.
 
-De SASS funktioner som använts är bland annat: 
-* Variabler 
-* Color functions
-* Nesting
-* Mixins
-* Selector inheritance
-* If/else-satser.
-* Partials
+Laborationen innehåller följande: (animationer.html)
 
-OBS: I labben har enbart color SCALE använts då jag fått upp varning om att functionen darken() håller på att avvecklas. 
+* Text- eller bildanimation - Rubriken på sidan byter färg. 
+* Rörliga objekt - Innehållet på sidan flyttas in från sidorna. 
+* Användarinteraktion - En knapp som aktiverar en animation. 
 
-Länk till webbplats: https://frontend-labb3.netlify.app/
+Länk till webbplats: https://frontend-labb4.netlify.app/
