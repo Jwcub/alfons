@@ -14,7 +14,7 @@ body {
 }
 
 h1, h2, h3 {
-    margin: 0;
+    margin: 10px 0;
 }
 
 .logo {
@@ -95,6 +95,7 @@ h1, h2, h3 {
 
     nav {
         position: absolute;
+        z-index: 9999;
         top: 60px;
         left: 0;
         width: 100%;
@@ -140,10 +141,15 @@ h1, h2, h3 {
     }
 }
 
+.established {
+     @include mixins.transparent-btn;
+}
+
 .wrapper-body {
     @include mixins.wrapper;
     display: flex;
     flex-direction: column;
+    margin-bottom: 40px;
 
     ul {
         margin-top: 0;
@@ -163,10 +169,38 @@ h1, h2, h3 {
     img {
         width: 100%;
         height: auto;
+        border-radius: 8px;
     }
 }
 
 footer {
-    text-align: center;
+    border-top: 1px solid variables.$color-terracotta;
 }
 
+.wrapper-footer {
+    @include mixins.wrapper;
+    display: flex;
+    gap: 40px;
+}
+
+.footer-item {
+    flex-basis: 33%;
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    li {
+        padding-bottom: 5px;
+    }
+    a {
+        color: light-dark(variables.$light-text, variables.$dark-text);
+    }
+    a:hover {
+        color: variables.$color-terracotta;
+    }
+}
+
+.copyright {
+    text-align: center;
+}
