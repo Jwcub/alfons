@@ -8,6 +8,8 @@ export default defineConfig({
                 main: resolve(__dirname, "index.html"),
                 sass: resolve(__dirname, "sass.html"),
                 animationer: resolve(__dirname, "animationer.html"),
+                diagram: resolve(__dirname, "diagram.html"),
+                karta: resolve(__dirname, "karta.html")
             }
         }
     }
