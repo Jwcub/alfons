@@ -1,18 +1,23 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => { 
-    createBarChart();
+    
+    if(document.getElementById("diagram")) {
+        createBarChart();
+        createPieChart();
+    }
 
-    if(document.getElementById("animation")) {
-    const animationButton = document.getElementById("show-animation");
-    animationButton.addEventListener("click", displayAnimation);
-
+    else if(document.getElementById("animation")) {
+    document.getElementById("show-animation").addEventListener("click", displayAnimation);
+    }
+});
+    /** 
+     * Funktion för att aktivera animation
+     */
     function displayAnimation() {
         const gif = document.querySelector(".gif");
         gif.style.animationPlayState = "running"
     }
-    }
-});
 
     /** 
      * Funktion för att hämta antagningsstatistik. 
@@ -38,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
      * @async
      * @returns {object[]} - Returnerar en lista med 6 mest sökta kurser
      */
-        function topCourses() {
+        async function topCourses() {
         let courses = await fetchAdmissionData();
         courses = courses.filter((course) => course.type === "Kurs");
         courses.sort((a, b) => b.applicantsTotal - a.applicantsTotal);
@@ -76,19 +81,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-        /*
-    //Lista top 5 mest sökta program
-    function topPrograms(admissions) {
-
-        let programs = admissions.filter((admission) => admission.type === "Program");
+    /** 
+     * Funktion för att bearbeta antagningsstatistik och returnera 5 mest sökta programmen. 
+     * @async
+     * @returns {object[]} - Returnerar en lista med 5 mest sökta programmen
+     */
+    async function topPrograms() {
+        let programs = await fetchAdmissionData();
+        programs = programs.filter((program) => program.type === "Program");
         programs.sort((a, b) => b.applicantsTotal - a.applicantsTotal);
         programs = programs.slice(0,5);
-
-        createPieChart(programs);
+        return programs;
     }
 
-    // Skapa cirkeldiagram med mest sökta program
-    function createPieChart(programs) {
+    /** 
+     * Funktion för att skapa stapeldiagram med de mest populära kurserna
+     * @async
+     */
+    async function createPieChart() {
+        let programs = await topPrograms();
+
         const pieChart = document.getElementById('pieChart');
 
         new Chart(pieChart, {
@@ -104,6 +116,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         });
     }
-        */
 
 
