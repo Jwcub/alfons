@@ -249,7 +249,8 @@ footer {
     top: 4px;
 }
 
-.center-chart {
-    max-width: 400px;
-    align-self: center;
+.chart-container {
+    position: relative;
+    height: 70vh;
+    width: 70vw;
 }
