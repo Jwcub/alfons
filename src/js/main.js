@@ -1,7 +1,7 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => { 
-    fetchAdmissionData();
+    createBarChart();
 
     if(document.getElementById("animation")) {
     const animationButton = document.getElementById("show-animation");
@@ -9,12 +9,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function displayAnimation() {
         const gif = document.querySelector(".gif");
-
-            gif.style.animationPlayState = "running"
+        gif.style.animationPlayState = "running"
     }
     }
+});
 
-    // Funktion för att hämta antagningsstatistik
+    /** 
+     * Funktion för att hämta antagningsstatistik. 
+     * @async
+     * @returns {object[]} - Returnerar en lista med kurser och program
+     */
     async function fetchAdmissionData() {
         const url = "https://mallarmiun.github.io/Frontend-baserad-webbutveckling/Moment%205%20-%20Dynamiska%20webbplatser/statistik_sokande_ht25.json";
 
@@ -22,26 +26,33 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await fetch(url);
             const admissions = await response.json();
-
-            topCourses(admissions);
-            topPrograms(admissions);
+            return admissions;
 
         } catch (error){
             console.error("Fel: " + error);
         }
     }
 
-    // Lista top 6 mest sökta kurser
-    function  topCourses(admissions) {
-        let courses = admissions.filter((admission) => admission.type === "Kurs");
+    /** 
+     * Funktion för att bearbeta antagningsstatistik och returnera 6 mest sökta kurserna. 
+     * @async
+     * @returns {object[]} - Returnerar en lista med 6 mest sökta kurser
+     */
+        function topCourses() {
+        let courses = await fetchAdmissionData();
+        courses = courses.filter((course) => course.type === "Kurs");
         courses.sort((a, b) => b.applicantsTotal - a.applicantsTotal);
         courses = courses.slice(0,6);
-
-        createChart(courses)  
+        return courses;
     }
 
-    // Skapa stapeldiagram med mest sökta kurser
-    function createChart(courses) {
+    /** 
+     * Funktion för att skapa stapeldiagram med de mest populära kurserna
+     * @async
+     */
+    async function createBarChart() {
+        let courses = await topCourses();
+
         const barChart = document.getElementById('barChart');
 
         new Chart(barChart, {
@@ -65,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+        /*
     //Lista top 5 mest sökta program
     function topPrograms(admissions) {
 
@@ -92,4 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         });
     }
-});
+        */
+
+
