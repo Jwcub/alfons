@@ -169,6 +169,11 @@ img {
         align-self: center;
         margin-top: 20px;
     }
+
+    input {
+        padding: 15px 20px;
+        width: 70%;
+    }
 }
 
 .text-block {
@@ -253,4 +258,8 @@ footer {
     position: relative;
     height: 70vh;
     width: 70vw;
+}
+
+.search-area {
+    max-width: 450px;
 }
