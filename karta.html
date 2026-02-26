@@ -35,16 +35,16 @@
         <section class="wrapper-body">
             <h1>Karta</h1>
 
-            <div class="search-area">
+            <div id="search" class="search-area">
                 <label>
                     <strong>Sök på karta</strong><br>
-                    <input id="search-field" type="search" placeholder="Skriv in adress">
+                    <input id="search-input" type="text" placeholder="Skriv in adress">
                 </label>
-                <button class="search-button">Sök</button>
+                <button id="search-btn" class="search-button">Sök</button>
             </div>
 
             <div id="map">
-                <!-- Placeholder for map -->
+                <iframe width="425" height="350" class="map" src="https://www.openstreetmap.org/export/embed.html?bbox=17.26012229919434%2C62.373777677983355%2C17.332820892333988%2C62.40548136580552&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?#map=14/62.38963/17.29647">Visa större karta</a></small>
             </div>
             
 
@@ -87,6 +87,6 @@
 
     <script type="module" src="/src/js/main.js"></script>
     <script type="module" src="/src/js/diagram.js"></script>
-    <script type="module" src="/src/js/maps.js"></script>
+    <script type="module" src="/src/js/map-script.js"></script>
 </body>
 </html>
