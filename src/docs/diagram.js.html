@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: diagram.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: diagram.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+
+document.addEventListener("DOMContentLoaded", () => { 
+    
+    if(document.getElementById("diagram")) {
+        createBarChart();
+        createPieChart();
+    }
+
+});
+    /** 
+     * Funktion för att aktivera animation
+     */
+    function displayAnimation() {
+        const gif = document.querySelector(".gif");
+        gif.style.animationPlayState = "running"
+    }
+
+    /** 
+     * Funktion för att hämta antagningsstatistik. 
+     * @async
+     * @returns {object[]} - Returnerar en lista med kurser och program
+     */
+    async function fetchAdmissionData() {
+        const url = "https://mallarmiun.github.io/Frontend-baserad-webbutveckling/Moment%205%20-%20Dynamiska%20webbplatser/statistik_sokande_ht25.json";
+
+        // Anropa och läs ut data
+        try {
+            const response = await fetch(url);
+            const admissions = await response.json();
+            return admissions;
+
+        } catch (error){
+            console.error("Fel: " + error);
+        }
+    }
+
+    /** 
+     * Funktion för att bearbeta antagningsstatistik och returnera 6 mest sökta kurserna. 
+     * @async
+     * @returns {object[]} - Returnerar en lista med 6 mest sökta kurser
+     */
+        async function topCourses() {
+        let courses = await fetchAdmissionData();
+        courses = courses.filter((course) => course.type === "Kurs");
+        courses.sort((a, b) => b.applicantsTotal - a.applicantsTotal);
+        courses = courses.slice(0,6);
+        return courses;
+    }
+
+    /** 
+     * Funktion för att skapa stapeldiagram med de mest populära kurserna
+     * @async
+     */
+    async function createBarChart() {
+        let courses = await topCourses();
+
+        const barChart = document.getElementById('barChart');
+
+        new Chart(barChart, {
+        type: 'bar',
+        data: {
+            labels: courses.map(row => row.name),
+            datasets: [{
+            label: 'Antal sökande',
+            data: courses.map(row => row.applicantsTotal),
+            borderWidth: 1,
+            backgroundColor: '#e55934ff',
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+        });
+    }
+
+    /** 
+     * Funktion för att bearbeta antagningsstatistik och returnera 5 mest sökta programmen. 
+     * @async
+     * @returns {object[]} - Returnerar en lista med 5 mest sökta programmen
+     */
+    async function topPrograms() {
+        let programs = await fetchAdmissionData();
+        programs = programs.filter((program) => program.type === "Program");
+        programs.sort((a, b) => b.applicantsTotal - a.applicantsTotal);
+        programs = programs.slice(0,5);
+        return programs;
+    }
+
+    /** 
+     * Funktion för att skapa stapeldiagram med de mest populära kurserna
+     * @async
+     */
+    async function createPieChart() {
+        let programs = await topPrograms();
+
+        const pieChart = document.getElementById('pieChart');
+
+        new Chart(pieChart, {
+        type: 'pie',
+        data: {
+            labels: programs.map(row => row.name),
+            datasets: [{
+            label: 'Antal sökande',
+            data: programs.map(row => row.applicantsTotal),
+            backgroundColor: ['#e55934ff', '#d9594cff', '#ce8d66ff', '#c3bf6dff', '#b7b868ff'],
+            hoverOffset: 4
+            }]
+        }
+        });
+    }</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createBarChart">createBarChart</a></li><li><a href="global.html#createPieChart">createPieChart</a></li><li><a href="global.html#displayAnimation">displayAnimation</a></li><li><a href="global.html#fetchAdmissionData">fetchAdmissionData</a></li><li><a href="global.html#findAdress">findAdress</a></li><li><a href="global.html#findOnMap">findOnMap</a></li><li><a href="global.html#generateCordinates">generateCordinates</a></li><li><a href="global.html#topCourses">topCourses</a></li><li><a href="global.html#topPrograms">topPrograms</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Fri Feb 27 2026 15:58:41 GMT+0100 (centraleuropeisk normaltid)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
