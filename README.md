@@ -1,10 +1,4 @@
-# UPPGIFT 4 #
-I denna uppgift har jag tränat på att använda grafiska effekter med CSS.
+# UPPGIFT 5 #
+I denna uppgift har jag tränat på att kombinera webbtjänster och använda JSDoc.
 
-Laborationen innehåller följande: (animationer.html)
-
-* Text- eller bildanimation - Rubriken på sidan byter färg. 
-* Rörliga objekt - Innehållet på sidan flyttas in från sidorna. 
-* Användarinteraktion - En knapp som aktiverar en animation. 
-
-Länk till webbplats: https://frontend-labb4.netlify.app/
+Länk till webbplats: https://frontend-labb5.netlify.app/
